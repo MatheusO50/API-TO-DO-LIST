@@ -12,8 +12,8 @@ using To_Do_List.Repository;
 namespace To_Do_List.Migrations
 {
     [DbContext(typeof(DbDataContext))]
-    [Migration("20260818202021_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20260819185649_InitalMigration")]
+    partial class InitalMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace To_Do_List.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("To_Do_List.Models.TaskEntity", b =>
+            modelBuilder.Entity("To_Do_List.Models.TaskUser", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -51,7 +51,7 @@ namespace To_Do_List.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("To_Do_List.Models.UserEntity", b =>
+            modelBuilder.Entity("To_Do_List.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -74,7 +74,11 @@ namespace To_Do_List.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("hash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("salt")
                         .IsRequired()
                         .HasColumnType("text");
 

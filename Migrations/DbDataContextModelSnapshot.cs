@@ -22,7 +22,7 @@ namespace To_Do_List.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("To_Do_List.Models.TaskEntity", b =>
+            modelBuilder.Entity("To_Do_List.Models.TaskUser", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace To_Do_List.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("To_Do_List.Models.UserEntity", b =>
+            modelBuilder.Entity("To_Do_List.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -71,7 +71,11 @@ namespace To_Do_List.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("hash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("salt")
                         .IsRequired()
                         .HasColumnType("text");
 
