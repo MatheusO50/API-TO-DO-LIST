@@ -13,6 +13,7 @@
 ## ⚙️ Pré-requisitos
 - .NET 10 (ou superior)
 - Git
+- PostgreSQL
 
 ## 🚀 Como executar o Projeto
 
