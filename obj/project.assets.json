@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net10.0": {
       "Humanizer.Core/2.14.1": {
@@ -2313,29 +2313,29 @@
     ]
   },
   "packageFolders": {
-    "/home/code/.nuget/packages/": {}
+    "/home/anonimo/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/code/projects/To_Do_List/To_Do_List.csproj",
+      "projectUniqueName": "/home/anonimo/projects/API-TO-DO-LIST/To_Do_List.csproj",
       "projectName": "To_Do_List",
-      "projectPath": "/home/code/projects/To_Do_List/To_Do_List.csproj",
-      "packagesPath": "/home/code/.nuget/packages/",
-      "outputPath": "/home/code/projects/To_Do_List/obj/",
+      "projectPath": "/home/anonimo/projects/API-TO-DO-LIST/To_Do_List.csproj",
+      "packagesPath": "/home/anonimo/.nuget/packages/",
+      "outputPath": "/home/anonimo/projects/API-TO-DO-LIST/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/code/.nuget/NuGet/NuGet.Config"
+        "/home/anonimo/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "/usr/lib64/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -2350,11 +2350,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.400"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": {
@@ -2401,7 +2400,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/code/.dotnet/sdk/10.0.400/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/10.0.111/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

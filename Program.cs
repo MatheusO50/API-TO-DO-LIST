@@ -1,6 +1,7 @@
 using To_Do_List.Repository;
 using Scalar.AspNetCore;
 using Microsoft.EntityFrameworkCore;
+using To_Do_List.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,8 @@ builder.Services.AddDbContext<DbDataContext>(opt =>
 {
    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultStringConnection")); 
 });
+builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
