@@ -9,6 +9,7 @@
 - Linguagem: C#
 - Framework: ASP.NET
 - Banco de Dados: PostgreSQL
+- Empacotagem: Docker
 
 ## ⚙️ Pré-requisitos
 - .NET 10 (ou superior)
