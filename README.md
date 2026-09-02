@@ -1,6 +1,6 @@
 # API To-Do-List
 > Em desenvolvimento ⏳
- - [❌] CRUD
+ - [✅​] CRUD
  - [❌] Autenticação JWT
  - [❌] Criptografia com bcrypt
  - [❌] Consumindo API
