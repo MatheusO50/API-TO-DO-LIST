@@ -11,6 +11,7 @@ namespace To_Do_List.Service
         public UserService(UserRepository userRepository) {_userRepository = userRepository;}
         public UserDto AddItem(User item)
         {
+        if(_userRepository.ExistItem(item) is false) throw new ArgumentException("user already exists");
             var user = _userRepository.AddItem(item);
             return user;
         }

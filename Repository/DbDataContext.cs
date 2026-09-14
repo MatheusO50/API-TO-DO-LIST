@@ -1,6 +1,7 @@
 using To_Do_List.Models;
 using To_Do_List.Interface;
 using To_Do_List.DTO;
+using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 
 namespace To_Do_List.Repository
@@ -19,6 +20,7 @@ namespace To_Do_List.Repository
         public UserRepository(DbDataContext context) {_context = context;}
         public UserDto AddItem(User item) 
         {
+            item.Passwordhash = BCrypt.Net.BCrypt.HashPassword(item.Passwordhash);
             _context.Users.Add(item);
             _context.SaveChanges();
             return new UserDto
@@ -68,6 +70,12 @@ namespace To_Do_List.Repository
             user.Email = item.Email;
             try{ _context.SaveChanges();}
             catch(Exception ex) {Console.WriteLine(ex);}
+        }
+
+        public bool ExistItem(User item)
+        {
+            if(_context.Users.Any(x => x.Id == item.Id)) return false;
+            return true;    
         }
     }
 }

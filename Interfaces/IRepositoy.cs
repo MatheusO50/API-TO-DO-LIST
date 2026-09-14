@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 namespace To_Do_List.Interface
 {
     public interface IRepository<TRequest,TResponse>
@@ -7,5 +9,6 @@ namespace To_Do_List.Interface
         public IEnumerable<TResponse> GetAll();
         public void RemoveItem(long id);
         public void UpdateItem(TResponse item);
+        public bool ExistItem(TRequest item);
     }
 }

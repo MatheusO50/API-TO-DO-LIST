@@ -1,6 +1,6 @@
 namespace To_Do_List.DTO
 {
-    public class UserDto
+    public record class UserDto
     {
         public long Id { get; set; }
         public string Name { get; set; } = string.Empty;
