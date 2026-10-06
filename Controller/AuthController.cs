@@ -8,10 +8,22 @@ namespace To_Do_List.Controller
     
     [Route("api/[Controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly UserService _userservice;
-        public UserController(UserService userService) {_userservice = userService;}
+        private readonly AuthService _authService;
+        public AuthController(UserService userService , AuthService authService) 
+        {
+            _userservice = userService;
+            _authService = authService;
+        }
+        [HttpPost("login")]
+        public IActionResult Login(LoginUser user)
+        {
+            var response = _authService.LoginRequest(user);
+            if(response == null) return Unauthorized("Invalid username or password");
+            return Ok(response);
+        }
         [HttpPost]
         public ActionResult<UserDto> PostUser(User new_user)
         {

@@ -11,12 +11,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
-builder.Services.AddDbContext<DbDataContext>(opt =>
+builder.Services.AddDbContext<DataContext>(opt =>
 {
    opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultStringConnection")); 
 });
+
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<AuthService>();
 
 var jwtSettings = builder.Configuration.GetSection("jwt");
 var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]!);

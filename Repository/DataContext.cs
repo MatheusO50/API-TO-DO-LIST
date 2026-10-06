@@ -1,23 +1,23 @@
 using To_Do_List.Models;
 using To_Do_List.Interface;
 using To_Do_List.DTO;
-using BCrypt.Net;
 using Microsoft.EntityFrameworkCore;
 
 namespace To_Do_List.Repository
 {
-    public class DbDataContext : DbContext
+    public class DataContext : DbContext
     {
-        public DbDataContext(DbContextOptions<DbDataContext> options) : base(options) {}
+        public DataContext(DbContextOptions<DataContext> options) : base(options) {}
         public DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<TaskUser> Tasks { get; set; }
 
     }
 
     public class UserRepository : IRepository<User,UserDto>
     {
-        private readonly DbDataContext _context;
-        public UserRepository(DbDataContext context) {_context = context;}
+        private readonly DataContext _context;
+        public UserRepository(DataContext context) {_context = context;}
         public UserDto AddItem(User item) 
         {
             item.Passwordhash = BCrypt.Net.BCrypt.HashPassword(item.Passwordhash);
@@ -36,7 +36,7 @@ namespace To_Do_List.Repository
             var user = _context.Users.Find(id);
             return new UserDto
             {
-              Id = user.Id,
+              Id = user!.Id,
               Name = user.Name,
               Adress = user.Adress,
               Email = user.Email  
@@ -57,14 +57,14 @@ namespace To_Do_List.Repository
             var user = _context.Users.Find(id);
             try
             {
-                _context.Users.Remove(user);
+                _context.Users.Remove(user!);
                 _context.SaveChanges();    
             } catch(Exception ex) {Console.WriteLine(ex);}
         }
         public void UpdateItem(UserDto item)
         {
             var user = _context.Users.Find(item.Id);
-            user.Id = item.Id;
+            user!.Id = item.Id;
             user.Name = item.Name;
             user.Adress = item.Adress;
             user.Email = item.Email;
